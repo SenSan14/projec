@@ -20,7 +20,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import game.Board;
 
-public class Home {
+public class Home extends JFrame {
 	
 	private JLabel difficulty = new  JLabel("Set difficulty level: ");
 	private JLabel opponent = new JLabel("Select oponent: ");
@@ -39,5 +39,55 @@ public class Home {
 	private JSpinner rowSpinner = new JSpinner();
 	private JSpinner columnSpinner = new JSpinner();
 	
-	 
+	public Home()  {
+
+		//setting up the JPanel with GridBagLayout manager
+		JPanel panel = new JPanel(new GridBagLayout());
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.insets = new Insets(10, 10, 10, 10);
+		
+		//add all the components to the panel
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		panel.add(about,constraints);
+		
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		panel.add(difficulty, constraints);
+		
+		constraints.gridx = 1;
+		panel.add(easyLevel, constraints);
+		
+		constraints.gridx = 2;
+		panel.add(mediumLevel, constraints);
+		
+		constraints.gridx= 3;
+		panel.add(hardLevel, constraints);
+		
+		// Bunch of other placements of buttons
+		
+		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(), "Memory game menu"));
+		
+		// add panel to frame
+		add(panel);
+		
+		//centering and pack of frame
+		pack();
+		setLocationRelativeTo(null);
+	}
+	 	
+	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new Home().setVisible(true);
+			}
+		});
+	}
 }
