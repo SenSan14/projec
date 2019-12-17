@@ -39,7 +39,7 @@ public class Home extends JFrame {
 	private JButton exit = new JButton("Exit");
 	private JButton highscore = new JButton("Highscore");
 	
-	// creating radiobuttons and enforcing only 1 is selected
+	// creating radio buttons and enforcing only 1 is selected
 	private JRadioButton easyLevel = new JRadioButton("Easy");
 	private JRadioButton  mediumLevel = new JRadioButton("Medium");
 	private JRadioButton hardLevel = new JRadioButton("Hard");
