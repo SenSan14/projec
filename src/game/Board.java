@@ -1,6 +1,9 @@
 package game;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+
 import game.CellFactory;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -14,42 +17,38 @@ import javax.swing.JTextArea;
 
 public class Board {
 	
-	int numberOfRows;
-	int numberOfColums;
+	static int numberOfRows;
+	static int numberOfColums;
 	
-	private CellFactory cellFactory = new CellFactory();
-	private Cell[] boardCells = null;
+	private Cell[][] cell ;
+	private String boardCells ;
+	
 	
 	//constructor of the board
 	public Board(int rows, int columns) {
-		
-		this.boardCells = this.cellFactory.generateCells(rows, columns);
-		
-		//creating the frame of the actual game
-		JFrame board = new JFrame("Nice Memory game");
-	    board.setSize(400, 400);
-	    board.setLocation(300,200);
-	    board.setResizable(false); 
-	    board.setVisible(true);
-	    board.setLayout(new GridLayout());
+		JFrame f = new JFrame("Window containing a matrix");
+	    JPanel p = new JPanel();
+	    p.setLayout(new GridLayout(rows, columns));
 	    
-	    JPanel gamefield = new JPanel();
-	    JPanel scoreboard = new JPanel();
-	    board.add(gamefield);
-	    board.add(scoreboard);
+	    for (int i = 0; i < 10; i++) {
+	        for (int j = 0; j < 10; j++) {
+	            cell[i][j] = (Cell) new JButton();
+	            cell[i][j].setBackground(Color.black);
+	            p.add(cell[i][j]);
+	        }
+	    }
+	       
 	    
-	    
-	    
-	    //cells neerzetten in juiste panel
-	    //elke cell heeft listener
-	    
+	    f.add(p);
+	    f.pack();
+	    f.setVisible(true);
 	}
 	
 	public static void main(String[] args) {
+		Board boardtest = new Board(10,10);
+		
 	}
 
-
-	
 	
 }
 
