@@ -3,6 +3,8 @@ package gui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 import javax.swing.BorderFactory;
@@ -54,6 +56,8 @@ public class Home extends JFrame {
 	SpinnerModel sModel = new SpinnerNumberModel(1, 1, 20, 1);
 	private JSpinner rowSpinner = new JSpinner(sModel);
 	private JSpinner columnSpinner = new JSpinner(sModel);
+	
+	private Board board;
 	
 	public Home()  {
 
@@ -143,6 +147,17 @@ public class Home extends JFrame {
 		//centering and pack of frame
 		pack();
 		setLocationRelativeTo(null);
+		
+		//Listener on startbutton
+		this.start.addActionListener(new ActionListener() {
+            private Board board;
+
+			public void actionPerformed(ActionEvent e) {
+                this.board = new Board(4,4);
+            }
+        });
+			  
+			
 	}
 	 	
 	public static void main(String[] args) {

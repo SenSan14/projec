@@ -11,30 +11,41 @@ import game.Cell;
 
 public class CellFactory {
 	
-	private JButton[][] buttons;
-	public int i,j;
+	private Cell[][] cells;
+	private String path;
 	
-
-	public Cell[][] newCells (int rows, int columns) {
-		Cell [][] buttonPanel = new Cell[rows][columns];
+	public CellFactory (int rows, int columns, Board board){
+		System.out.println("created factory for cells");
+		this.newCells(rows, columns, board);
+	}
+	
+	
+	private void newCells (int rows, int columns, Board board) {
+		System.out.println("create new cells");
+		Cell [][] cells = new Cell[rows][columns];
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; columns < j; j++)
-				buttonPanel [i][j] =  new Cell();
+				
+				//Icon image = new Icon;
+				//
+				cells [i][j] =  new Cell("naam", board );
 		}
-		return buttonPanel;
+		this.cells = cells;
+		this.ShuffleMatrix();
 	}
 
 		
 	
 	//in deze class constructor cell aanroepen en afbeeldingen per cell meegeven
 	
-	private void ShuffledMatrix() {
+	private void ShuffleMatrix() {
 		
+	}
+
+	public Cell[][] getCells() {
+		return this.cells;
 	}
 	
 
-	public static void main(String[] args) {
-		JPanel test = new JPanel()
-	}
 
 }
